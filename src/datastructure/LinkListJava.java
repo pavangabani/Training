@@ -48,7 +48,14 @@ class Node{
         first=first.next;
         first.pre=null;
     }
-    //remove between
+    void remove(int value){
+        Node traverse=first;
+        while(traverse.next.value!=value){
+            traverse=traverse.next;
+        }
+        traverse.next=traverse.next.next;
+        traverse.next.pre=traverse;
+    }
     void display(){
         System.out.println("onward :");
         Node traverse=first;
@@ -73,7 +80,7 @@ public class LinkListJava {
         node.addLast(55);
         node.display();
 
-        System.out.println("23 Add after 22 ");
+        System.out.println("33 Add after 22 ");
         node.add(22,33);
         node.add(44,1);
         node.display();
@@ -88,6 +95,10 @@ public class LinkListJava {
 
         System.out.println("RemoveFirst");
         node.removeFirst();
+        node.display();
+
+        System.out.println("Remove 33");
+        node.remove(33);
         node.display();
     }
 }

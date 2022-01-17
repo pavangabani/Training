@@ -22,7 +22,16 @@ class Node {
         traverse.next = node;
         node.next = first;
     }
-
+    int remove(){
+        Node traverse = first;
+        while (traverse.next != first) {
+            traverse = traverse.next;
+        }
+        int ans=traverse.next.value;
+        traverse.next=traverse.next.next;
+        first=first.next;
+        return ans;
+    }
     void display() {
         Node traverse = first;
         while (traverse.next != first) {
@@ -32,13 +41,17 @@ class Node {
         System.out.println(traverse.value);
     }
 }
-//remove
+
     public class CircularQueue {
         public static void main(String[] args) {
             Node node = new Node(1);
             node.start();
             node.add(3);
             node.add(5);
+            node.display();
+
+            System.out.println("Remove Element: "+node.remove());
+            System.out.println("After Remove");
             node.display();
         }
     }

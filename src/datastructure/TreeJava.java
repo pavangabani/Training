@@ -1,3 +1,7 @@
+package datastructure;
+import java.util.LinkedList;
+import java.util.Queue;
+
 class TreeNode{
     int value;
     TreeNode left;
@@ -33,7 +37,22 @@ class TreeNode{
             traverse.right.displayDFS();
         }
     }
-//BFS
+    void displayBFS()
+    {
+        TreeNode root=this;
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            TreeNode tempNode = queue.poll();
+            System.out.print(tempNode.value + " ");
+            if (tempNode.left != null) {
+                queue.add(tempNode.left);
+            }
+            if (tempNode.right != null) {
+                queue.add(tempNode.right);
+            }
+        }
+    }
 }
 public class TreeJava {
     public static void main(String []s){
@@ -51,5 +70,7 @@ public class TreeJava {
         node.add(101);
         System.out.println("DFS");
         node.displayDFS();
+        System.out.println("BFS");
+        node.displayBFS();
     }
 }
