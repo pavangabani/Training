@@ -9,9 +9,10 @@ import java.util.concurrent.Executors;
 
 public class MobileBill {
 
+    public int total;
+    public static int current;
     List<HashMap<String,Integer>> mobileBills= new ArrayList<>();
     HashMap<Integer,Integer> totalBillList=new HashMap<>();
-    int currentBillNumber;
 
     public void addBill(){
         HashMap bill=new HashMap();
@@ -42,8 +43,9 @@ public class MobileBill {
 
         ExecutorService pool= Executors.newFixedThreadPool(2);
         for(int i=0;i<numberOfBill;i++){
-            obj.currentBillNumber=i;
-            Runnable task=new CalculateBill(obj);
+            current =i;
+            Runnable objRef=new CalculateBill(obj);
+            Thread task=new Thread(objRef);
             pool.execute(task);
         }
     }

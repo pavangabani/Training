@@ -8,13 +8,13 @@ public class CalculateBill implements Runnable{
     }
 
     void calculate() throws InterruptedException {
-        for(String key: obj.mobileBills.get(obj.currentBillNumber).keySet()){
-            totalPrice=totalPrice+obj.mobileBills.get(obj.currentBillNumber).get(key);
+        for(String key: obj.mobileBills.get(obj.total).keySet()){
+            totalPrice=totalPrice+obj.mobileBills.get(obj.current).get(key);
         }
         Thread calculateGST=new Thread(new Runnable() {
             @Override
             public void run() {
-                totalGST= (int) (totalPrice*0.25);
+                totalGST = (int) (totalPrice * 0.25);
             }
         });
         Thread calculateServiceText=new Thread(new Runnable() {
@@ -35,7 +35,7 @@ public class CalculateBill implements Runnable{
         calculateServiceText.join();
         calculateTotal.start();
         calculateTotal.join();
-        obj.totalBillList.put(obj.currentBillNumber, totalBill);
+        obj.totalBillList.put(obj.current, totalBill);
     }
 
     @Override
