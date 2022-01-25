@@ -41,14 +41,12 @@ public class ConnectionThread implements Runnable{
             channel.connect();
             String ans =inputStreamToString(in);
 
-
             String[] ansArray= ans.split("\n");
             float total=Float.valueOf(ansArray[0].trim());
             float used=Float.valueOf(ansArray[1].trim());
 
             float cpuUsage=(used/total)*100;
             System.out.println("Memory Usage: "+cpuUsage+" %");
-
 
 
         } catch (JSchException e) {
