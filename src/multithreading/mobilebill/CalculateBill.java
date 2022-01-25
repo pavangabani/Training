@@ -1,4 +1,5 @@
 package multithreading.mobilebill;
+//not completed
 public class CalculateBill implements Runnable{
     int totalPrice=0,totalGST=0,totalServiceText=0,totalBill=0;
     MobileBill obj;
