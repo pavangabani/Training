@@ -45,8 +45,8 @@ public class ConnectionThread implements Runnable{
             float total=Float.valueOf(ansArray[0].trim());
             float used=Float.valueOf(ansArray[1].trim());
 
-            float cpuUsage=(used/total)*100;
-            System.out.println("Memory Usage: "+cpuUsage+" %");
+            float memoryUsage=(used/total)*100;
+            System.out.println("Memory Usage: "+memoryUsage+" %");
 
 
         } catch (JSchException e) {
