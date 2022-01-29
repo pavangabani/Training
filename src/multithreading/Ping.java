@@ -26,8 +26,8 @@ public class Ping {
     public static void main(String[] args) throws IOException, InterruptedException {
         long start=System.currentTimeMillis();
         String networkId="172.16.10.0";
-        ExecutorService pool= Executors.newFixedThreadPool(10);
-        for(int i=1;i<255;i++){
+        ExecutorService pool= Executors.newFixedThreadPool(50);
+        for(int i=1;i<500000;i++){
             networkId=networkId.substring(0,networkId.lastIndexOf(".")+1)+i;
             Runnable task=new PingThread(networkId);
             pool.execute(task);
